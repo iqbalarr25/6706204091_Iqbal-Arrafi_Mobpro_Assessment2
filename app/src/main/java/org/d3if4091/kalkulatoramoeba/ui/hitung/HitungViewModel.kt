@@ -17,4 +17,8 @@ class HitungViewModel: ViewModel() {
         hasilAmoeba.value = HasilAmoeba(hasil.toFloat(), awalAmoeba, pembelahanAmoeba, rentangWaktu, jangkaWaktu)
     }
     fun getHasilAmoeba(): LiveData<HasilAmoeba?> = hasilAmoeba
+
+    fun deleteHasilAmoeba(){
+        hasilAmoeba.value = null
+    }
 }

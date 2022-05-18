@@ -5,12 +5,19 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 
 import org.d3if4091.kalkulatoramoeba.databinding.ActivityMainBinding
+import org.d3if4091.kalkulatoramoeba.model.HasilAmoeba
+import org.d3if4091.kalkulatoramoeba.ui.hitung.HitungViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: HitungViewModel by lazy {
+        ViewModelProvider(this)[HitungViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,39 +25,47 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnHitung.setOnClickListener{hitungAmoeba()}
         binding.btnReset.setOnClickListener{reset()}
+        viewModel.getHasilAmoeba().observe(this) { showResult(it) }
     }
 
     private fun hitungAmoeba(){
-        var jumlahAwalAmoeba = binding.jumlahAwalAmoebaInp.text.toString()
+        val jumlahAwalAmoeba = binding.jumlahAwalAmoebaInp.text.toString()
         //jumlah awal amoeba validation textview validation
         if(TextUtils.isEmpty(jumlahAwalAmoeba)){
             Toast.makeText(this, R.string.jumlah_awal_amoeba_kosong, Toast.LENGTH_LONG).show()
             return
         }
-        var jumlahPembelahanAmoeba = binding.jumlahPembelahanAmoebaInp.text.toString()
+        val jumlahPembelahanAmoeba = binding.jumlahPembelahanAmoebaInp.text.toString()
         //jumlah pembelahan amoeba textview validation
         if(TextUtils.isEmpty(jumlahPembelahanAmoeba)){
             Toast.makeText(this, R.string.jumlah_pembelahan_amoeba_kosong, Toast.LENGTH_LONG).show()
             return
         }
-        var rentangWaktu = binding.rentangWaktuInp.text.toString()
+        val rentangWaktu = binding.rentangWaktuInp.text.toString()
         //rentang waktu textview validation
         if(TextUtils.isEmpty(rentangWaktu)){
             Toast.makeText(this, R.string.rentang_waktu_membelah_kosong, Toast.LENGTH_LONG).show()
             return
         }
-        var jangkaWaktu = binding.jangkaWaktuInp.text.toString()
+        val jangkaWaktu = binding.jangkaWaktuInp.text.toString()
         //jangka waktu textview validation
         if(TextUtils.isEmpty(jangkaWaktu)){
             Toast.makeText(this, R.string.jangka_waktu_kosong, Toast.LENGTH_LONG).show()
             return
         }
-        //perhitungan aritmatika pembelahan amoeba
-        var jumlahWaktuPembelahan = jangkaWaktu.toDouble() /  rentangWaktu.toDouble()
-        var hasil = jumlahAwalAmoeba.toDouble() * (Math.pow(jumlahPembelahanAmoeba.toDouble(), jumlahWaktuPembelahan))
 
+        viewModel.hitungAmoeba(
+            jumlahAwalAmoeba.toFloat(),
+            jumlahPembelahanAmoeba.toFloat(),
+            rentangWaktu.toFloat(),
+            jangkaWaktu.toFloat(),
+        )
+    }
+
+    private fun showResult(hasil: HasilAmoeba?){
+        if(hasil == null) return
         //fungsi ini untuk membulatkan kebawah dan menghilangkan koma pada angka
-        binding.hasil.text = Math.round(Math.floor(hasil)).toString()
+        binding.hasil.text = Math.round(Math.floor(hasil.hasilAmoeba.toDouble())).toString()
     }
     //dialog box konfirmasi sebelum reset halaman
     private fun reset(){

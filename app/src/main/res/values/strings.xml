@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Kalkulator Amoeba</string>
+    <string name="judul">Amoeba adalah organisme kecil bersel tunggal yang hidup dalam kondisi lembap, seperti di air tawar, air asin, tanah, dan di dalam hewan. Amoeba berkembang biak dengan cara aseksual, yakni membelah diri.</string>
+    <string name="jumlah_awal_amoeba_hint">Jumlah awal amoeba</string>
+    <string name="jumlah_pembelahan_amoeba_hint">Pembelahan amoeba / rentang waktu</string>
+    <string name="rentang_waktu_hint">Rentang waktu membelah (menit)</string>
+    <string name="jangka_waktu_hint">Jangka waktu (menit)</string>
+    <string name="reset">Reset</string>
+    <string name="hitung">Hitung</string>
+    <!--hint-->
+    <string name="jumlah_awal_amoeba_kosong">Jumlah awal amoeba harus diisi!</string>
+    <string name="jumlah_pembelahan_amoeba_kosong">Jumlah pembelahan amoeba harus diisi!</string>
+    <string name="rentang_waktu_membelah_kosong">Rentang waktu membelah harus diisi!</string>
+    <string name="jangka_waktu_kosong">Jangka waktu harus diisi!</string>
+    <!--dialog box-->
+</resources>

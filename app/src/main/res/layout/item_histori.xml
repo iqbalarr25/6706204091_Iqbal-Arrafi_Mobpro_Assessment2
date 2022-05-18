@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:contentDescription="@string/gambar_amoeba"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/amoeba"/>
+
+    <TextView
+        android:id="@+id/tv_amoebaAwal"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="6dp"
+        tools:text="Amoeba awal: 5"/>
+
+    <TextView
+        android:id="@+id/tv_pembelahanAmoeba"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/tv_amoebaAwal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="6dp"
+        tools:text="Pembelahan amoeba: 5"/>
+
+    <TextView
+        android:id="@+id/tv_rentangWaktu"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/tv_pembelahanAmoeba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="6dp"
+        tools:text="Rentang waktu: 5"/>
+
+    <TextView
+        android:id="@+id/tv_jangkaWaktu"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/tv_rentangWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="6dp"
+        tools:text="Jangka waktu: 5"/>
+
+    <TextView
+        android:id="@+id/tv_hasilAmoeba"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/tv_jangkaWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="6dp"
+        tools:text="Hasil amoeba: 25"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

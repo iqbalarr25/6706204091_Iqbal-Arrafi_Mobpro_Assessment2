@@ -1,6 +1,5 @@
 package org.d3if4091.kalkulatoramoeba.ui.histori
 
-import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import org.d3if4091.kalkulatoramoeba.databinding.ItemHistoriBinding
 import org.d3if4091.kalkulatoramoeba.db.AmoebaEntity
 import org.d3if4091.kalkulatoramoeba.model.hitungAmoeba
 
-class HistoriAdapter(private val historiFragment: HistoriFragment) : ListAdapter<AmoebaEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
+class HistoriAdapter() : ListAdapter<AmoebaEntity, HistoriAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK =
@@ -50,7 +49,6 @@ class HistoriAdapter(private val historiFragment: HistoriFragment) : ListAdapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.setOnClickListener{
             Log.d("HistoriAdapter", getItem(position).id.toString())
-            //if(RecyclerView.NO_POSITION != position) historiFragment.updateData(getItem(position))
         }
         holder.bind(getItem(position))
     }

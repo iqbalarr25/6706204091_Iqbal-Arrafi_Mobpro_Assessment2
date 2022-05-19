@@ -12,4 +12,9 @@
         android:id="@+id/menu_about"
         android:title="@string/tentang_aplikasi"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_save_database"
+        android:title="@string/unsave_database"
+        app:showAsAction="never" />
 </menu>

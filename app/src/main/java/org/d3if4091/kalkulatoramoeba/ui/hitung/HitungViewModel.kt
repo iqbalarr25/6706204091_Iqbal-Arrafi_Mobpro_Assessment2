@@ -16,7 +16,7 @@ class HitungViewModel(private val db: AmoebaDao): ViewModel() {
 
     private val hasilAmoeba = MutableLiveData<HasilAmoeba?>()
 
-    fun hitungAmoeba(awalAmoeba : Float, pembelahanAmoeba: Float, rentangWaktu: Float, jangkaWaktu: Float){
+    fun hitungAmoeba(awalAmoeba : Float, pembelahanAmoeba: Float, rentangWaktu: Float, jangkaWaktu: Float, saveDatabase: Boolean){
 
         val dataAmoeba = AmoebaEntity(
             awalAmoeba = awalAmoeba,
@@ -27,9 +27,11 @@ class HitungViewModel(private val db: AmoebaDao): ViewModel() {
 
         hasilAmoeba.value = dataAmoeba.hitungAmoeba()
 
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                db.insert(dataAmoeba)
+        if(saveDatabase){
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    db.insert(dataAmoeba)
+                }
             }
         }
     }

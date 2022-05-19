@@ -12,12 +12,6 @@ interface AmoebaDao {
     @Query("SELECT * FROM amoeba ORDER BY id")
     fun getLastBmi(): LiveData<List<AmoebaEntity>>
 
-    @Query("DELETE FROM amoeba")
-    fun clearData()
-
-    @Update
-    fun updateData(amoeba: AmoebaEntity)
-
     @Delete
     fun clearData(amoeba: AmoebaEntity)
 }

@@ -8,9 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import org.d3if4091.kalkulatoramoeba.R
+import org.d3if4091.kalkulatoramoeba.data.SettingDataStore
+import org.d3if4091.kalkulatoramoeba.data.dataStore
 import org.d3if4091.kalkulatoramoeba.databinding.FragmentHitungBinding
 import org.d3if4091.kalkulatoramoeba.db.AmoebaDb
 import org.d3if4091.kalkulatoramoeba.model.HasilAmoeba
@@ -20,6 +24,8 @@ import kotlin.math.roundToInt
 class HitungFragment : Fragment() {
 
     private lateinit var binding: FragmentHitungBinding
+    private var saveDatabaseManager = true
+    private lateinit var DatabaseDataStore: SettingDataStore
 
     private val viewModel: HitungViewModel by lazy {
         val db = AmoebaDb.getInstance(requireContext())
@@ -41,12 +47,18 @@ class HitungFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        DatabaseDataStore = SettingDataStore(requireContext().dataStore)
+        DatabaseDataStore.preferenceFlow.asLiveData().observe(viewLifecycleOwner) {
+            value -> saveDatabaseManager = value
+            activity?.invalidateOptionsMenu()
+        }
         viewModel.getHasilAmoeba().observe(requireActivity()) { showResult(it) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.options_menu, menu)
+        val saveDatabaseButton= menu.findItem(R.id.menu_save_database)
+        setText(saveDatabaseButton)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,6 +70,13 @@ class HitungFragment : Fragment() {
             R.id.menu_about -> {
                 findNavController().navigate(R.id.action_hitungFragment_to_aboutFragment)
                 return true
+            }
+            R.id.menu_save_database -> {
+                saveDatabaseManager = !saveDatabaseManager
+                lifecycleScope.launch {
+                    DatabaseDataStore.saveSettingToPreferencesStore(saveDatabaseManager, requireContext())
+                }
+                setText(item)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -94,7 +113,16 @@ class HitungFragment : Fragment() {
             jumlahPembelahanAmoeba.toFloat(),
             rentangWaktu.toFloat(),
             jangkaWaktu.toFloat(),
+            saveDatabaseManager
         )
+    }
+
+    private fun setText(menuItem: MenuItem){
+        if(saveDatabaseManager){
+            menuItem.setTitle(R.string.unsave_database)
+        }else{
+            menuItem.setTitle(R.string.save_database)
+        }
     }
 
     private fun showResult(hasil: HasilAmoeba?){
@@ -105,7 +133,6 @@ class HitungFragment : Fragment() {
         binding.btnShareButton.visibility = View.VISIBLE
     }
 
-    //dialog box konfirmasi sebelum reset halaman
 
     private fun reset(){
         val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)

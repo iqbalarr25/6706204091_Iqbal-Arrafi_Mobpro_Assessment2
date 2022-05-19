@@ -49,7 +49,7 @@ class HistoriFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        myAdapter = HistoriAdapter(this)
+        myAdapter = HistoriAdapter()
         with(binding.recyclerView) {
             addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
             adapter = myAdapter

@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import org.d3if4091.kalkulatoramoeba.R
 import org.d3if4091.kalkulatoramoeba.databinding.FragmentHitungBinding
+import org.d3if4091.kalkulatoramoeba.db.AmoebaDb
 import org.d3if4091.kalkulatoramoeba.model.HasilAmoeba
 import kotlin.math.floor
 import kotlin.math.roundToInt
@@ -21,7 +22,9 @@ class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
 
     private val viewModel: HitungViewModel by lazy {
-        ViewModelProvider(requireActivity())[HitungViewModel::class.java]
+        val db = AmoebaDb.getInstance(requireContext())
+        val factory = HitungViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[HitungViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -131,7 +134,6 @@ class HitungFragment : Fragment() {
             viewModel.getHasilAmoeba().value?.jangkaWaktu.toString(),
             viewModel.getHasilAmoeba().value?.hasilAmoeba.toString(),
             )
-
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
         if(shareIntent.resolveActivity(

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import org.d3if4091.kalkulatoramoeba.R
 import org.d3if4091.kalkulatoramoeba.databinding.FragmentHitungBinding

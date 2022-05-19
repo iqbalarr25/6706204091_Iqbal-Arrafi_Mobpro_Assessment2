@@ -22,5 +22,5 @@
     <string name="about">Aplikasi hitung amoeba merupakan sebuah aplikasi Android untuk menghitung jumlah pembelahan amoeba dengan rentang dan jangka waktu tertentu, sehingga seseorang dapat mengetahui berapa jumlah pembelahan amoeba yang diperoleh\n\nAplikasi ini dibuat untuk kebutuhan Assessment 1 dan 2. Temukan kodenya di https://github.com/iqbalarr25/6706204091_Iqbal-Arrafi_Mobpro_Assessment2\n\nCopyright © 2021 Iqbal Arrafi.\nAll rights reserved.</string>
     <string name="tentang_aplikasi">Tentang aplikasi</string>
     <string name="share_hasil">Share hasil</string>
-    <string name="bagikan_template">Tahukah kalian?\njumlah pembelahan amoeba yang awalnya terdapat %1$s buah amoeba, dengan pembelahan %2$s buah setiap %3$s menit dalam jangka waktu %4$s menit. Dapat menghasilkan %5$s buah amoeba lohh.</string>
+    <string name="bagikan_template">Tahukah kalian?\nJumlah pembelahan amoeba yang awalnya terdapat %1$s buah amoeba, setelah melakukan pembelahan %2$s amoeba setiap %3$s menit selama %4$s menit, dapat menghasilkan %5$s buah amoeba lohh.</string>
 </resources>

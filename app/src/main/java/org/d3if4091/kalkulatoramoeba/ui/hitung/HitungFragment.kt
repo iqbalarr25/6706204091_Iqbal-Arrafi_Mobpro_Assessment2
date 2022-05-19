@@ -1,5 +1,6 @@
 package org.d3if4091.kalkulatoramoeba.ui.hitung
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.*
@@ -96,6 +97,8 @@ class HitungFragment : Fragment() {
         if(hasil == null) return
         //fungsi ini untuk membulatkan kebawah dan menghilangkan koma pada angka
         binding.hasil.text = floor(hasil.hasilAmoeba.toDouble()).roundToInt().toString()
+        binding.btnShareButton.setOnClickListener{shareData()}
+        binding.btnShareButton.visibility = View.VISIBLE
     }
 
     //dialog box konfirmasi sebelum reset halaman
@@ -118,4 +121,21 @@ class HitungFragment : Fragment() {
         )
     }
 
+    private fun shareData(){
+        val message = getString(
+            R.string.bagikan_template,
+            viewModel.getHasilAmoeba().value?.awalAmoeba.toString(),
+            viewModel.getHasilAmoeba().value?.pembelahanAmoeba.toString(),
+            viewModel.getHasilAmoeba().value?.rentangWaktu.toString(),
+            viewModel.getHasilAmoeba().value?.jangkaWaktu.toString(),
+            viewModel.getHasilAmoeba().value?.hasilAmoeba.toString(),
+            )
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if(shareIntent.resolveActivity(
+                requireActivity().packageManager) != null) {
+            startActivity(shareIntent)
+        }
+    }
 }

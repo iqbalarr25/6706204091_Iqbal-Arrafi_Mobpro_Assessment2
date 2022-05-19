@@ -128,7 +128,8 @@
             app:layout_constraintTop_toBottomOf="@id/hasil"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text=""/>
+            android:visibility="invisible"
+            android:text="@string/share_hasil"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

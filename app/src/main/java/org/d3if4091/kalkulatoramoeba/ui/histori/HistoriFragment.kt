@@ -1,4 +1,6 @@
 package org.d3if4091.kalkulatoramoeba.ui.histori
 
-class HistoriFragment {
+import androidx.fragment.app.Fragment
+
+class HistoriFragment : Fragment() {
 }

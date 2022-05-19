@@ -13,5 +13,21 @@
         <action
             android:id="@+id/action_hitungFragment_self"
             app:destination="@id/hitungFragment" />
+        <action
+            android:id="@+id/action_hitungFragment_to_historiFragment"
+            app:destination="@id/historiFragment" />
+        <action
+            android:id="@+id/action_hitungFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historiFragment"
+        android:name="org.d3if4091.kalkulatoramoeba.ui.histori.HistoriFragment"
+        android:label="fragment_histori"
+        tools:layout="@layout/fragment_histori" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="org.d3if4091.kalkulatoramoeba.ui.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about"/>
 </navigation>

@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/activity_main.xml" value="0.16545532278751604" />
-        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/fragment_histori.xml" value="0.25" />
-        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/fragment_hitung.xml" value="0.16545532278751604" />
+        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/fragment_about.xml" value="0.31765711842667804" />
+        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/fragment_histori.xml" value="0.33" />
+        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/fragment_hitung.xml" value="0.25" />
         <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/layout/item_histori.xml" value="0.33" />
+        <entry key="..\:/Users/iqbal/AndroidStudioProjects/KalkulatorAmoeba2/app/src/main/res/menu/options_menu.xml" value="0.16545532278751604" />
       </map>
     </option>
   </component>
